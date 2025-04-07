@@ -55,14 +55,22 @@ def inicializar_poblacion(tamano_poblacion, longitud_cromosoma):
 # 2. Evaluación - Jorge
 # =====================
 def evaluar(cromosoma, cursos):
-    """_summary_
+    """
+    Evalúa un cromosoma calculando su aptitud según el total de horas seleccionadas,
+    comparado con el objetivo de horas (HORAS_OBJETIVO). Si el total excede el objetivo,
+    se aplica una penalización.
 
     Args:
-        cromosoma (_type_): _description_
-        cursos (_type_): _description_
+        cromosoma (list[int]): Lista binaria indicando los cursos seleccionados.
+        cursos (list[tuple]): Lista de cursos con sus horas.
 
     Returns:
-        _type_: _description_
+        float: Valor de aptitud. 0 si se excede el objetivo, o inversamente proporcional
+               a la diferencia entre el total de horas y el objetivo.
+
+    Ejemplo:
+        Si HORAS_OBJETIVO = 14 y cursos = [("Matemáticas", 5), ("Historia", 3), ("Física", 4), ("Arte", 2), ("Programación", 6)],
+        y cromosoma = [1, 0, 1, 1, 0], el total es 11, la diferencia es 3, y la aptitud será 1 / (1 + 3) = 0.25.
     """
     total = sum(cursos[i][1] for i in range(len(cromosoma)) if cromosoma[i] == 1)
     diferencia = abs(HORAS_OBJETIVO - total)
