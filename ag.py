@@ -82,14 +82,20 @@ def evaluar(cromosoma, cursos):
 # 3. Selección - Fabricio
 # =====================
 def seleccion(poblacion, cursos):
-    """_summary_
+    """
+    Selecciona un individuo (cromosoma) de la población para ser padre utilizando el método de selección por torneo 
+    (tamaño de torneo = 2). Se eligen aleatoriamente dos individuos distintos de la población actual. Se calcula la aptitud 
+    (fitness) de ambos utilizando la función `evaluar`. El individuo con la mayor aptitud es seleccionado como el "ganador" del
+    torneo y se devuelve para ser utilizado en la fase de cruce como padre.
 
     Args:
-        poblacion (_type_): _description_
-        cursos (_type_): _description_
+        poblacion (list[list[int]]): La lista de cromosomas (individuos) que componen la población actual.
+        cursos (list[tuple]): La lista de cursos disponibles con sus horas.Es necesaria para poder llamar a 
+                            la función `evaluar` y calcular la aptitud de los individuos del torneo.
 
     Returns:
-        _type_: _description_
+        list[int]: El cromosoma seleccionado (el 'ganador' del torneo) que será utilizado como padre en la 
+                   siguiente generación. En caso de empate en la aptitud, se devuelve el segundo individuo del torneo.
     """
     torneo = random.sample(poblacion, 2)
     fitnesses = [evaluar(ind, cursos) for ind in torneo]
