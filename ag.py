@@ -105,14 +105,25 @@ def seleccion(poblacion, cursos):
 # 4. Cruce - Josue
 # =====================
 def cruce(padre1, padre2):
-    """_summary_
+    """
+    Realiza el cruce (crossover) entre dos cromosomas padres para generar dos nuevos cromosomas hijos.
+
+    Este cruce se realiza mediante un punto de corte aleatorio. Los genes del primer hijo son tomados
+    desde el inicio de `padre1` hasta el punto de cruce, y desde el punto de cruce hasta el final de `padre2`.
+    Para el segundo hijo, se invierte el orden de los padres.
 
     Args:
-        padre1 (_type_): _description_
-        padre2 (_type_): _description_
+        padre1 (list[int]): Cromosoma padre representado como lista de 0s y 1s.
+        padre2 (list[int]): Otro cromosoma padre de la misma longitud.
 
     Returns:
-        _type_: _description_
+        tuple[list[int], list[int]]: Una tupla con dos listas binarias, que representan los cromosomas hijos generados.
+
+    Ejemplo:
+        >>> padre1 = [1, 0, 1, 0]
+        >>> padre2 = [0, 1, 0, 1]
+        >>> cruce(padre1, padre2)
+        ([1, 0, 0, 1], [0, 1, 1, 0])
     """
     punto = random.randint(1, len(padre1) - 1)
     hijo1 = padre1[:punto] + padre2[punto:]
