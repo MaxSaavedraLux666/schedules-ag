@@ -27,6 +27,15 @@ def inicializar_poblacion(tamano_poblacion, longitud_cromosoma):
         poblacion.append(cromosoma)
     return poblacion
 
+# =====================
+# 2. Evaluación - Jorge
+# =====================
+def evaluar(cromosoma, cursos):
+    total = sum(cursos[i][1] for i in range(len(cromosoma)) if cromosoma[i] == 1)
+    diferencia = abs(HORAS_OBJETIVO - total)
+    if total > HORAS_OBJETIVO:
+        return 0
+    return 1 / (1 + diferencia)
 
 # =====================
 # Ejecutar algoritmo
