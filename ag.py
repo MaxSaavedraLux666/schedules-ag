@@ -27,7 +27,6 @@ def inicializar_poblacion(tamano_poblacion, longitud_cromosoma):
         poblacion.append(cromosoma)
     return poblacion
 
-# =====================
 # 2. Evaluación - Jorge
 # =====================
 def evaluar(cromosoma, cursos):
@@ -37,6 +36,14 @@ def evaluar(cromosoma, cursos):
         return 0
     return 1 / (1 + diferencia)
 
+# =====================
+# 4. Cruce - Josue
+# =====================
+def cruce(padre1, padre2):
+    punto = random.randint(1, len(padre1) - 1)
+    hijo1 = padre1[:punto] + padre2[punto:]
+    hijo2 = padre2[:punto] + padre1[punto:]
+    return hijo1, hijo2
 # =====================
 # Ejecutar algoritmo
 # =====================
