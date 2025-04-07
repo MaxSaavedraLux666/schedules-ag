@@ -52,6 +52,21 @@ def cruce(padre1, padre2):
     hijo1 = padre1[:punto] + padre2[punto:]
     hijo2 = padre2[:punto] + padre1[punto:]
     return hijo1, hijo2
+
+
+# =====================
+# 5. Mutación - Willy
+# =====================
+def mutacion(cromosoma, tasa=0.1):
+    return [1 - gen if random.random() < tasa else gen for gen in cromosoma]
+
+# =====================
+# Decodificación final
+# =====================
+def decodificar(cromosoma, cursos):
+    return [cursos[i] for i in range(len(cromosoma)) if cromosoma[i] == 1]
+
+
 # =====================
 # Ejecutar algoritmo
 # =====================
