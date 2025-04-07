@@ -37,6 +37,14 @@ def evaluar(cromosoma, cursos):
     return 1 / (1 + diferencia)
 
 # =====================
+# 3. Selección - Fabricio
+# =====================
+def seleccion(poblacion, cursos):
+    torneo = random.sample(poblacion, 2)
+    fitnesses = [evaluar(ind, cursos) for ind in torneo]
+    return torneo[0] if fitnesses[0] > fitnesses[1] else torneo[1]
+
+# =====================
 # 4. Cruce - Josue
 # =====================
 def cruce(padre1, padre2):
