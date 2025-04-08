@@ -135,14 +135,18 @@ def cruce(padre1, padre2):
 # 5. Mutación - Willy
 # =====================
 def mutacion(cromosoma, tasa=0.1):
-    """_summary_
+    """
+    Aplica mutación a un cromosoma, invirtiendo genes con una cierta probabilidad.
+
+    Cada gen tiene una probabilidad `tasa` de cambiar su valor (de 0 a 1 o de 1 a 0),
+    lo que ayuda a mantener la diversidad genética y evitar soluciones repetitivas.
 
     Args:
-        cromosoma (_type_): _description_
-        tasa (float, optional): _description_. Defaults to 0.1.
+        cromosoma (list[int]): Cromosoma binario a modificar.
+        tasa (float): Probabilidad de mutar cada gen. Por defecto es 0.1.
 
     Returns:
-        _type_: _description_
+        list[int]: Cromosoma mutado.
     """
     return [1 - gen if random.random() < tasa else gen for gen in cromosoma]
 
