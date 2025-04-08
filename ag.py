@@ -172,33 +172,33 @@ def algoritmo_genetico():
     longitud = len(cursos)
 
     poblacion = inicializar_poblacion(tamano_poblacion, longitud)
-    print("🔄 Población Inicial:")
+    print("[+] Población Inicial:")
     for idx, crom in enumerate(poblacion):
         print(
             f"  Individuo {idx + 1}: {crom} - Fitness: {evaluar(crom, cursos):.2f}")
     print("="*50)
 
     for gen in range(generaciones):
-        print(f"\n🧬 Generación {gen + 1}")
+        print(f"\n[+] Generación {gen + 1}")
         nueva_poblacion = []
 
         for i in range(tamano_poblacion // 2):
-            print(f"\n🔗 Selección de padres ({i+1}):")
+            print(f"\n[+] Selección de padres ({i+1}):")
             padre1 = seleccion(poblacion, cursos)
             padre2 = seleccion(poblacion, cursos)
             print(f" - Padre 1: {padre1}")
             print(f" - Padre 2: {padre2}")
 
             hijo1, hijo2 = cruce(padre1, padre2)
-            print(f" 🧪 Cruce → Hijo 1: {hijo1}, Hijo 2: {hijo2}")
+            print(f" [+] Cruce → Hijo 1: {hijo1}, Hijo 2: {hijo2}")
 
             hijo1 = mutacion(hijo1)
             hijo2 = mutacion(hijo2)
-            print(f" 🔀 Mutación → Hijo 1: {hijo1}, Hijo 2: {hijo2}")
+            print(f" [+] Mutación → Hijo 1: {hijo1}, Hijo 2: {hijo2}")
 
             fitness1 = evaluar(hijo1, cursos)
             fitness2 = evaluar(hijo2, cursos)
-            print(f" ✅ Fitness → H1: {fitness1:.2f}, H2: {fitness2:.2f}")
+            print(f" [+] Fitness → H1: {fitness1:.2f}, H2: {fitness2:.2f}")
 
             nueva_poblacion.extend([hijo1, hijo2])
 
@@ -208,8 +208,9 @@ def algoritmo_genetico():
         for crom in poblacion:
             if evaluar(crom, cursos) == 1:
                 print(
-                    f"\n✅✅ Solución exacta encontrada en generación {gen + 1}")
-                print(f"🧬 Cromosoma seleccionado: {crom}")  # <-- esta línea imprime el cromosoma
+                    f"\n[+] Solución exacta encontrada en generación {gen + 1}")
+                # <-- esta línea imprime el cromosoma
+                print(f"[+] Cromosoma seleccionado: {crom}")
                 seleccionados = decodificar(crom, cursos)
                 imprimir_resultado(seleccionados)
                 return
@@ -217,7 +218,7 @@ def algoritmo_genetico():
     # Si no se encuentra exacta, mostrar la mejor
     mejor = max(poblacion, key=lambda c: evaluar(c, cursos))
     seleccionados = decodificar(mejor, cursos)
-    print("\n⚠️ No se encontró una solución exacta, pero esta es la mejor encontrada:")
+    print("\n[+] No se encontró una solución exacta, pero esta es la mejor encontrada:")
     imprimir_resultado(seleccionados)
 
 
@@ -233,7 +234,7 @@ def imprimir_resultado(lista_cursos):
         Muestra en consola los cursos seleccionados y la suma total de horas.
     """
     total = sum(h for _, h in lista_cursos)
-    print(f"\n🧑‍🏫 Cursos seleccionados ({total} horas):")
+    print(f"\n[+] Cursos seleccionados ({total} horas):")
     for nombre, horas in lista_cursos:
         print(f" - {nombre}: {horas}h")
 
@@ -243,7 +244,7 @@ def imprimir_resultado(lista_cursos):
 # Ejecutar algoritmo
 # =====================
 if __name__ == "__main__":
-    print("👨‍🏫 Algoritmo Genético para Selección de Cursos")
+    print("[+] Algoritmo Genético para Selección de Cursos")
     print("="*50)
     print("Cursos disponibles:")
     # Imprimir cursos disponibles
