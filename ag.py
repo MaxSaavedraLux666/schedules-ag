@@ -154,14 +154,15 @@ def mutacion(cromosoma, tasa=0.1):
 # Decodificación final
 # =====================
 def decodificar(cromosoma, cursos):
-    """_summary_
+    """
+    Decodifica un cromosoma binario para obtener los cursos seleccionados.
 
     Args:
-        cromosoma (_type_): _description_
-        cursos (_type_): _description_
+        cromosoma (list[int]): Lista de 0s y 1s que indica los cursos elegidos.
+        cursos (list[str]): Lista de cursos disponibles.
 
     Returns:
-        _type_: _description_
+        list[str]: Lista de cursos seleccionados (donde cromosoma[i] == 1).
     """
     return [cursos[i] for i in range(len(cromosoma)) if cromosoma[i] == 1]
 
